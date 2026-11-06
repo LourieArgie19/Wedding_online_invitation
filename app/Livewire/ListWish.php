@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Wishes;
+use App\Models\Wedding;
 use Livewire\Component;
 
 class ListWish extends Component
@@ -12,7 +13,7 @@ class ListWish extends Component
     public function render()
     {
         return view('livewire.list-wish', [
-            'wish' => Wishes::orderby('id', 'desc')->get()
+            'wish' => Wishes::where('wedding_id', Wedding::where('status', 'Active')->value('id'))->latest('id')->get()
         ]);
     }
 }

@@ -2,110 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bride;
-use App\Models\Detail;
-use App\Models\Galery;
 use App\Models\Wedding;
-use App\Models\Gift;
-use App\Models\Thank;
-use App\Models\Wishes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class HomeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
-        $to         = $request->to;
-        $wedding    = Wedding::all();
-        $bride      = Bride::all();
-        $detail     = Detail::all();
-        $gift       = Gift::all();
-        $thank      = Thank::all();
-        $galery     = Galery::all();
-        $wish       = Wishes::orderby('id', 'desc')->get();
-        $bank       = Bride::select('brides.name', 'brides.acc_name', 'brides.acc_number', 'brides.bank_id', 'banks.name as bank_name', 'banks.logo')->join('banks', 'banks.id', 'brides.bank_id')->get();
+        $request->validate(['to' => ['nullable', 'string', 'max:255']]);
+        $invitation = Wedding::where('status', 'Active')->orderBy('id')->first();
+        $program = $invitation?->invitation_profile === 'dy-ann-dennis' ? config('invitation.dy-ann-dennis') : null;
+        $details = $invitation?->detail()->orderBy('date')->get() ?? collect();
+        $albums = $invitation?->galery()->get() ?? collect();
+        $photos = $albums->flatMap(fn ($album) => collect(range(1, 6))->map(fn ($n) => $album->{'gallery'.$n}))->filter()->values();
+        $date = $invitation?->wedding_date
+            ? Carbon::parse($invitation->wedding_date.' '.($program['ceremony'] ?? '00:00'), $program['timezone'] ?? config('app.timezone'))
+            : ($details->first()?->date ? Carbon::parse($details->first()->date) : null);
 
-        return view('home', compact('bride', 'detail', 'wedding', 'gift', 'bank', 'to', 'thank', 'wish', 'galery'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name'              => 'required',
-            'comment'           => 'required',
-        ]);
-
-        $input = $request->all();
-        $input['wedding_id'] = 1;
-
-        Wishes::create($input);
-
-        return redirect('/' . '#tab-wishes');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('home', compact('invitation', 'program', 'details', 'albums', 'photos', 'date') + ['to' => $request->query('to')]);
     }
 }
