@@ -15,7 +15,7 @@ test('the seeded invitation renders the guest, wedding, and gallery', function (
         ->assertSee('Dy Ann & Dennis')
         ->assertSee('storage/dy-ann-dennis/smiles.webp')
         ->assertSee('Lourdes Mills')
-        ->assertSee('3:00 PM')->assertSee('3:30 PM')->assertSee('Ptr. Danilo Maboloc')
+        ->assertSee('3:00 PM')->assertSee('3:30 PM')->assertSee('Danilo Maboloc')
         ->assertSeeInOrder(['Cherry Grace S. Ampo', 'Jisbert Ampo', 'Ma. Corazon Tibon', 'Federico Tibon', 'Arwin C. Balbon', 'Avemly G. Balbon'])
         ->assertDontSee('Darren & Jun')->assertDontSee('2050')->assertDontSee('Jakarta');
 });

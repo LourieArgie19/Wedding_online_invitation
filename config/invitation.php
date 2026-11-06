@@ -8,7 +8,7 @@ return [
     'dy-ann-dennis' => [
         'timezone' => 'Asia/Manila',
         'venue' => 'Lourdes Mills', 'address' => 'Tinago, Tomas Oppus',
-        'arrival' => '15:00', 'ceremony' => '15:30', 'officiant' => 'Ptr. Danilo Maboloc',
+        'arrival' => '15:00', 'ceremony' => '15:30', 'officiant' => 'Danilo Maboloc',
         'parents' => [
             'Parents of the bride' => ['Merlinda B. Tereso', 'Danilo B. Tereso'],
             'Parents of the groom' => ['Rhodora L. Las Marias', 'Nestor T. Baldomar'],
