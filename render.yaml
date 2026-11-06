@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: wedding-online-invitation
+    runtime: docker
+    repo: https://github.com/LourieArgie19/Wedding_online_invitation
+    branch: main
+    region: singapore
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /
+    envVars:
+      - key: APP_NAME
+        value: Wedding Online Invitation
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_TIMEZONE
+        value: Asia/Manila
+      - key: INVITATION_PUBLIC_ONLY
+        value: "true"

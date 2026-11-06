@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'public_only' => env('INVITATION_PUBLIC_ONLY', false),
     'colors' => [
         'Blush pink' => '#eab8c5', 'White' => '#ffffff', 'Dusty blue' => '#91abc1',
     ],

@@ -1,0 +1,19 @@
+.git
+.env
+.env.*
+node_modules
+vendor
+public/build
+public/hot
+public/storage
+storage/framework
+storage/logs
+storage/*.key
+storage/app/public/all image
+bootstrap/cache/*.php
+database/*.sqlite*
+**/.DS_Store
+tests
+.phpunit.result.cache
+.idea
+.vscode

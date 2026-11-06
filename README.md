@@ -2,6 +2,43 @@
 
 A Laravel 11 wedding invitation with a Filament admin panel.
 
+## Deploy the free, read-only invitation to Render
+
+[Deploy to Render](https://render.com/deploy?repo=https://github.com/LourieArgie19/Wedding_online_invitation)
+
+Use the link above while signed in to Render, review the **Free** web service in **Singapore**, and deploy the Blueprint. The repository's `render.yaml` configures Docker and generates a separate production application key. No database service, paid disk, or copy of your local `.env` is needed.
+
+The image builds Vite assets and installs production PHP dependencies. On startup it creates a local SQLite database, applies migrations, and seeds only Dy Ann and Dennis's invitation and gallery. The optimized photos and music are included in the image. Login, registration, admin pages, and write requests return 404 when `INVITATION_PUBLIC_ONLY=true`. Your local MySQL application and admin panel remain available with the default `false` setting.
+
+Render may discard a free service's filesystem when it restarts. This setup recreates the published invitation from the seeder each time; make permanent content changes in the repository and redeploy. It does not copy local database records, admin accounts, or guest messages. Free services also sleep after 15 minutes of inactivity, so the first visitor after a quiet period may wait about a minute ([Render's free-service limits](https://render.com/docs/free)).
+
+If you already opened Render's **New Web Service** form instead of using the Blueprint, use:
+
+| Setting | Value |
+| --- | --- |
+| Repository / branch | `LourieArgie19/Wedding_online_invitation` / `main` |
+| Language | Docker |
+| Dockerfile Path | `./Dockerfile` |
+| Root Directory / Docker Command | Leave blank |
+| Region / instance | Singapore / Free |
+| Health Check Path | `/` |
+| Environment variable | `APP_KEY`: a new key from `php artisan key:generate --show` |
+
+Do not import the local `.env`: its `127.0.0.1` MySQL address is your Mac, not an online database. The Docker image already supplies production mode, disabled debug output, Manila time, file sessions/cache, and the public-only SQLite configuration. The startup script obtains `APP_URL` and `ASSET_URL` from Render's assigned HTTPS URL. For a custom domain, set `APP_URL` to that HTTPS address. Do not reuse or commit your local application key.
+
+To test the same image locally (requires Docker):
+
+```bash
+docker build -t wedding-invitation:render .
+docker run --rm -p 8080:10000 \
+  -e APP_KEY="$(php artisan key:generate --show)" \
+  -e APP_URL=http://localhost:8080 \
+  -e SESSION_SECURE_COOKIE=false \
+  wedding-invitation:render
+```
+
+Open `http://localhost:8080`. The container uses its own database and does not connect to your local MySQL database.
+
 ## Local setup
 
 Requires PHP 8.2+, Composer, Node.js 18+, and MySQL. PHP needs the MySQL and SQLite PDO extensions (SQLite is used for isolated tests).
