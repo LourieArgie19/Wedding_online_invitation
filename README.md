@@ -6,7 +6,11 @@ A Laravel 11 wedding invitation with a Filament admin panel.
 
 [Deploy to Render](https://render.com/deploy?repo=https://github.com/LourieArgie19/Wedding_online_invitation)
 
-Use the link above while signed in to Render, review the **Free** web service in **Singapore**, and deploy the Blueprint. The repository's `render.yaml` configures Docker and generates a separate production application key. No database service, paid disk, or copy of your local `.env` is needed.
+Use the link above while signed in to Render, review the **Free** web service named **dyann-and-dennis** in **Singapore**, and deploy the Blueprint. The repository's `render.yaml` configures Docker and generates a separate production application key. No database service, paid disk, or copy of your local `.env` is needed.
+
+The requested public address is `https://dyann-and-dennis.onrender.com`. Copy the exact URL Render assigns from the service's dashboard after it becomes **Live**, because Render may append a suffix if the name is unavailable. The application automatically uses Render's assigned URL for photos, music, and links.
+
+For the existing `wedding-online-invitation` Blueprint, sync this revision in that same Blueprint. It creates the `dyann-and-dennis` service and leaves the old service intact. Verify the new invitation before retiring the old service; do not create another Blueprint for the same new service.
 
 The image builds Vite assets and installs production PHP dependencies. On startup it creates a local SQLite database, applies migrations, and seeds only Dy Ann and Dennis's invitation and gallery. The optimized photos and music are included in the image. Login, registration, admin pages, and write requests return 404 when `INVITATION_PUBLIC_ONLY=true`. Your local MySQL application and admin panel remain available with the default `false` setting.
 
@@ -17,6 +21,7 @@ If you already opened Render's **New Web Service** form instead of using the Blu
 | Setting | Value |
 | --- | --- |
 | Repository / branch | `LourieArgie19/Wedding_online_invitation` / `main` |
+| Service name | `dyann-and-dennis` |
 | Language | Docker |
 | Dockerfile Path | `./Dockerfile` |
 | Root Directory / Docker Command | Leave blank |

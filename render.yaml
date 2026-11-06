@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: wedding-online-invitation
+    name: dyann-and-dennis
     runtime: docker
     repo: https://github.com/LourieArgie19/Wedding_online_invitation
     branch: main
@@ -11,7 +11,7 @@ services:
     healthCheckPath: /
     envVars:
       - key: APP_NAME
-        value: Wedding Online Invitation
+        value: "Dy Ann & Dennis"
       - key: APP_KEY
         generateValue: true
       - key: APP_ENV
