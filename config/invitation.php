@@ -10,8 +10,8 @@ return [
         'venue' => 'Lourdes Mills', 'address' => 'Tinago, Tomas Oppus',
         'arrival' => '15:00', 'ceremony' => '15:30', 'officiant' => 'Danilo Maboloc',
         'parents' => [
-            'Parents of the bride' => ['Merlinda B. Tereso', 'Danilo B. Tereso'],
-            'Parents of the groom' => ['Rhodora L. Las Marias', 'Nestor T. Baldomar'],
+            'Parents of the bride' => ['Danilo B. Tereso', 'Merlinda B. Tereso'],
+            'Parents of the groom' => ['Nestor T. Baldomar', 'Rhodora L. Las Marias'],
         ],
         'sponsors' => [
             ['Jisbert Ampo', 'Cherry Grace S. Ampo'],
