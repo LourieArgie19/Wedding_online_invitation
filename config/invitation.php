@@ -11,7 +11,7 @@ return [
         'arrival' => '15:00', 'ceremony' => '15:30', 'officiant' => 'Danilo Maboloc',
         'parents' => [
             'Parents of the bride' => ['Danilo B. Tereso', 'Merlinda B. Tereso'],
-            'Parents of the groom' => ['Nestor T. Baldomar', 'Rhodora L. Las Marias'],
+            'Parents of the groom' => ['Nestor T. Baldomar', 'Rhodora L. Baldomar'],
         ],
         'sponsors' => [
             ['Jisbert Ampo', 'Cherry Grace S. Ampo'],
