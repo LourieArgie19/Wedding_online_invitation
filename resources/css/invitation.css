@@ -137,6 +137,8 @@ h2 {margin-bottom:.4em}
 .closing::before,.closing::after {width:32%; opacity:.55}
 .closing-portrait {width:min(82%,340px); padding:.45em; background:#fffdfb; border:1px solid #dfcbd4; border-radius:50% 50% 4px 4px / 31% 31% 0 0; box-shadow:0 12px 30px #66475712}
 .closing-portrait img {width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; border-radius:inherit}
+.closing-portrait-full {border-radius:4px}
+.closing-portrait-full img {aspect-ratio:auto; object-fit:contain; border-radius:0}
 .closing-details {width:100%; max-width:430px}
 .closing-details>.label {color:var(--blue); font-size:.58em; letter-spacing:.2em}
 .closing h2 {font-size:clamp(42px,6cqi,58px); margin:.35em 0 .25em}

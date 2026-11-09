@@ -16,7 +16,7 @@ class DyAnnDennisSeeder extends Seeder
                 'name' => 'Dennis & Dy Ann', 'status' => 'Active',
                 'wedding_date' => '2026-12-08',
                 'note' => 'With faith at the heart of our promise and our families by our side, we invite you to witness the beginning of our married life.',
-                'hero1' => $path.'embrace.webp', 'hero2' => $path.'together.webp', 'hero3' => $path.'on-the-steps.webp',
+                'hero1' => $path.'embrace.webp', 'hero2' => $path.'together.webp', 'hero3' => $path.'99f1af15-7e0d-4248-b65c-758297be1463.jpeg',
             ]);
             if (! $wedding->wasRecentlyCreated) {
                 return;

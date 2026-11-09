@@ -126,7 +126,7 @@
         </section>
         <footer @class(['closing', 'floral', 'closing-with-photo' => (bool) $invitation->hero3]) id="celebration" aria-labelledby="closing-title">
             @if($invitation->hero3)
-                <figure class="closing-portrait"><img src="{{ asset('storage/'.$invitation->hero3) }}" alt="{{ $invitation->name }}" loading="lazy" width="675" height="900"></figure>
+                <figure @class(['closing-portrait', 'closing-portrait-full' => $program])><img src="{{ asset('storage/'.$invitation->hero3) }}" alt="{{ $invitation->name }}" loading="lazy" width="{{ $program ? 1536 : 675 }}" height="{{ $program ? 1024 : 900 }}"></figure>
             @endif
             <div class="closing-details">
                 <p class="label">With love & grateful hearts</p>
