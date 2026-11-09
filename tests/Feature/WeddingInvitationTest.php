@@ -12,7 +12,7 @@ test('the seeded invitation renders the guest, wedding, and gallery', function (
     $this->get('/?to=Wedding+Guest')
         ->assertOk()
         ->assertSee('Wedding Guest')
-        ->assertSee('Dy Ann & Dennis')
+        ->assertSee('Dennis & Dy Ann')
         ->assertSee('storage/dy-ann-dennis/smiles.webp')
         ->assertSee('Lourdes Mills')
         ->assertSee('3:00 PM')->assertSee('3:30 PM')->assertSee('Danilo Maboloc')

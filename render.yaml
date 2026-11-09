@@ -11,7 +11,7 @@ services:
     healthCheckPath: /
     envVars:
       - key: APP_NAME
-        value: "Dy Ann & Dennis"
+        value: "Dennis & Dy Ann"
       - key: APP_KEY
         generateValue: true
       - key: APP_ENV

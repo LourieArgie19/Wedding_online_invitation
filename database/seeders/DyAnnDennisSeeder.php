@@ -13,7 +13,7 @@ class DyAnnDennisSeeder extends Seeder
         DB::transaction(function () {
             $path = 'dy-ann-dennis/';
             $wedding = Wedding::firstOrCreate(['invitation_profile' => 'dy-ann-dennis'], [
-                'name' => 'Dy Ann & Dennis', 'status' => 'Active',
+                'name' => 'Dennis & Dy Ann', 'status' => 'Active',
                 'wedding_date' => '2026-12-08',
                 'note' => 'With faith at the heart of our promise and our families by our side, we invite you to witness the beginning of our married life.',
                 'hero1' => $path.'embrace.webp', 'hero2' => $path.'together.webp', 'hero3' => $path.'on-the-steps.webp',

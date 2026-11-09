@@ -76,8 +76,8 @@
         @if($program)
             <section class="paper-section story" id="story"><h2>Our Love Story</h2>
                 <div class="story-row">
-                    <a class="story-photo" href="{{ asset('storage/dy-ann-dennis/by-the-stairs.webp') }}" data-gallery aria-label="Enlarge photo of Dy Ann and Dennis on the stairs">
-                        <img src="{{ asset('storage/dy-ann-dennis/by-the-stairs.webp') }}" alt="Dy Ann and Dennis sharing a quiet moment" loading="lazy" width="960" height="1440">
+                    <a class="story-photo" href="{{ asset('storage/dy-ann-dennis/by-the-stairs.webp') }}" data-gallery aria-label="Enlarge photo of {{ $invitation->name }} on the stairs">
+                        <img src="{{ asset('storage/dy-ann-dennis/by-the-stairs.webp') }}" alt="{{ $invitation->name }} sharing a quiet moment" loading="lazy" width="960" height="1440">
                         <span class="photo-expand" aria-hidden="true">View photo ↗</span>
                     </a>
                     <div><h3>A Chance Encounter</h3><p>Our story began in the same IT department. He was a third-year student, while I was just in my first year. Little did I know that someone had already noticed me from a distance and secretly admired me. What started as a simple crush would soon become something more beautiful than we ever imagined.</p></div>
@@ -87,7 +87,7 @@
                     <p>Sometimes, love begins with the simplest words. After life's unexpected turns, a shared post led to a little conversation — first a “done,” then a “kumusta?” From those simple messages, we slowly got to know each other. Even distance couldn't stop what was meant to grow. And as our story unfolded, we discovered that God's timing was far more beautiful than our plans.</p>
                 </div>
                 <div class="story-row story-row-reverse">
-                    <a class="story-photo" href="{{ asset('storage/dy-ann-dennis/foreheads.webp') }}" data-gallery aria-label="Enlarge photo of Dy Ann and Dennis together in church">
+                    <a class="story-photo" href="{{ asset('storage/dy-ann-dennis/foreheads.webp') }}" data-gallery aria-label="Enlarge photo of {{ $invitation->name }} together in church">
                         <img src="{{ asset('storage/dy-ann-dennis/foreheads.webp') }}" alt="The couple together in church" loading="lazy" width="1440" height="960">
                         <span class="photo-expand" aria-hidden="true">View photo ↗</span>
                     </a>
@@ -100,7 +100,7 @@
             @if($program)
             <ol class="timeline">
                 <li><time datetime="{{ $program['arrival'] }}">{{ \Illuminate\Support\Carbon::parse($program['arrival'])->format('g:i A') }}</time><div><h3>Guest arrival</h3><p>Please join us at Lourdes Mills and settle in before the service begins.</p></div></li>
-                <li><time datetime="{{ $program['ceremony'] }}">{{ \Illuminate\Support\Carbon::parse($program['ceremony'])->format('g:i A') }}</time><div><h3>Wedding ceremony</h3><p>Dy Ann and Dennis exchange vows, with Pastor {{ $program['officiant'] }} officiating.</p></div></li>
+                <li><time datetime="{{ $program['ceremony'] }}">{{ \Illuminate\Support\Carbon::parse($program['ceremony'])->format('g:i A') }}</time><div><h3>Wedding ceremony</h3><p>{{ $invitation->name }} exchange vows, with Pastor {{ $program['officiant'] }} officiating.</p></div></li>
             </ol>
             @else
                 @forelse($details as $event)<p>{{ \Illuminate\Support\Carbon::parse($event->date)->format('g:i A') }} · {{ $event->address }}</p>@empty<p>Our wedding day details will be shared here soon.</p>@endforelse

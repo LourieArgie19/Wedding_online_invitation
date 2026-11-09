@@ -18,7 +18,7 @@ test('the public deployment seeds only the invitation and preserves it on restar
 
     config(['invitation.public_only' => true]);
     $this->get('/?to=Wedding+Guest')->assertOk()
-        ->assertSee('Wedding Guest')->assertSee('Dy Ann & Dennis')
+        ->assertSee('Wedding Guest')->assertSee('Dennis & Dy Ann')
         ->assertSee('December 8, 2026')->assertSee('Lourdes Mills');
     $this->get('/up')->assertOk();
     $this->get('/livewire/livewire.js')->assertOk();
